@@ -4,18 +4,18 @@ export const queryKeys = {
     detail: (id: string) => ["categories", id] as const,
   },
   gear: {
-    all: (filters?: Record<string, unknown>) => ["gear", filters] as const,
+    all: (filters?: object) => ["gear", filters] as const,
     detail: (id: string) => ["gear", "detail", id] as const,
-    mine: (filters?: Record<string, unknown>) => ["gear", "mine", filters] as const,
+    mine: (filters?: object) => ["gear", "mine", filters] as const,
   },
   rentals: {
-    mine: (filters?: Record<string, unknown>) => ["rentals", "mine", filters] as const,
+    mine: (filters?: object) => ["rentals", "mine", filters] as const,
     detail: (id: string) => ["rentals", "detail", id] as const,
-    providerOrders: (filters?: Record<string, unknown>) =>
+    providerOrders: (filters?: object) =>
       ["rentals", "provider", filters] as const,
   },
   payments: {
-    mine: (filters?: Record<string, unknown>) => ["payments", "mine", filters] as const,
+    mine: (filters?: object) => ["payments", "mine", filters] as const,
     detail: (id: string) => ["payments", "detail", id] as const,
   },
   reviews: {
@@ -25,8 +25,8 @@ export const queryKeys = {
     me: ["auth", "me"] as const,
   },
   admin: {
-    users: (filters?: Record<string, unknown>) => ["admin", "users", filters] as const,
-    gear: (filters?: Record<string, unknown>) => ["admin", "gear", filters] as const,
-    rentals: (filters?: Record<string, unknown>) => ["admin", "rentals", filters] as const,
+    users: (filters?: object) => ["admin", "users", filters] as const,
+    gear: (filters?: object) => ["admin", "gear", filters] as const,
+    rentals: (filters?: object) => ["admin", "rentals", filters] as const,
   },
 };
