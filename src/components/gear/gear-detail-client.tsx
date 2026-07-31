@@ -26,6 +26,12 @@ function calculateDays(start: string, end: string): number {
   return Math.max(1, Math.ceil(ms / (1000 * 60 * 60 * 24)));
 }
 
+function formatSpecValue(value: unknown): string {
+  if (typeof value === "boolean") return value ? "Yes" : "No";
+  if (Array.isArray(value)) return value.join(", ");
+  return String(value);
+}
+
 export function GearDetailClient({ gearId }: { gearId: string }) {
   const { data: gear, isLoading } = useGearDetail(gearId);
   const { data: reviews } = useGearReviews(gearId);
@@ -165,7 +171,7 @@ export function GearDetailClient({ gearId }: { gearId: string }) {
                   {Object.entries(gear.specifications).map(([key, value]) => (
                     <div key={key} className="border-base-200 flex justify-between border-b py-1">
                       <dt className="text-base-content/60 capitalize">{key}</dt>
-                      <dd className="font-medium">{String(value)}</dd>
+                      <dd className="font-medium">{formatSpecValue(value)}</dd>
                     </div>
                   ))}
                 </dl>
