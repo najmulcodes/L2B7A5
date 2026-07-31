@@ -17,7 +17,7 @@ export default function ProviderGearPage() {
 
   return (
     <div>
-      <div className="flex items-center justify-between mb-6 flex-wrap gap-2">
+      <div className="mb-6 flex flex-wrap items-center justify-between gap-2">
         <h1 className="text-2xl font-bold">My Gear</h1>
         <Link href="/dashboard/provider/gear/new" className="btn btn-primary btn-sm">
           <Plus className="size-4" /> List New Gear
@@ -57,21 +57,23 @@ export default function ProviderGearPage() {
             {data.items.map((item) => (
               <div
                 key={item.id}
-                className="card card-side bg-base-100 border border-base-300 overflow-hidden"
+                className="card card-side bg-base-100 border-base-300 overflow-hidden border"
               >
-                <figure className="relative w-28 shrink-0 bg-base-200">
+                <figure className="bg-base-200 relative w-28 shrink-0">
                   {item.images[0] && (
                     <Image src={item.images[0]} alt={item.name} fill className="object-cover" />
                   )}
                 </figure>
-                <div className="card-body p-4 flex-row items-center justify-between flex-wrap gap-2">
+                <div className="card-body flex-row flex-wrap items-center justify-between gap-2 p-4">
                   <div>
                     <p className="font-semibold">{item.name}</p>
-                    <p className="text-sm text-base-content/60">
+                    <p className="text-base-content/60 text-sm">
                       {formatMoney(item.pricePerDay)}/day &middot; {item.quantityAvailable}/
                       {item.quantityTotal} available
                     </p>
-                    <span className={`badge badge-sm mt-1 ${item.isActive ? "badge-success" : "badge-ghost"}`}>
+                    <span
+                      className={`badge badge-sm mt-1 ${item.isActive ? "badge-success" : "badge-ghost"}`}
+                    >
                       {item.isActive ? "Active" : "Inactive"}
                     </span>
                   </div>

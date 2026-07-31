@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function GearBrowsePage() {
   return (
-    <Suspense fallback={<div className="max-w-6xl mx-auto px-4 py-8">Loading...</div>}>
+    <Suspense fallback={<div className="mx-auto max-w-6xl px-4 py-8">Loading...</div>}>
       <GearBrowseClient />
     </Suspense>
   );

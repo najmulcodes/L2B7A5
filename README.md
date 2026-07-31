@@ -4,14 +4,14 @@ Next.js 16 (App Router) frontend for **GearUp**, a sports & outdoor gear rental 
 
 ## Tech stack
 
-| Concern | Choice |
-|---|---|
-| Framework | Next.js 16 (App Router, Turbopack), React 19, TypeScript 6 |
-| Styling | Tailwind CSS v4 (CSS-first config) + DaisyUI 5 |
-| Server state | TanStack Query 5 |
-| Forms | React Hook Form 7 + Zod 4 |
+| Concern      | Choice                                                                         |
+| ------------ | ------------------------------------------------------------------------------ |
+| Framework    | Next.js 16 (App Router, Turbopack), React 19, TypeScript 6                     |
+| Styling      | Tailwind CSS v4 (CSS-first config) + DaisyUI 5                                 |
+| Server state | TanStack Query 5                                                               |
+| Forms        | React Hook Form 7 + Zod 4                                                      |
 | Client state | Zustand (auth store only - everything else is server state via TanStack Query) |
-| Toasts | Sonner |
+| Toasts       | Sonner                                                                         |
 
 Like the backend, this targets **current** major versions rather than what most tutorials show - Next.js 16, React 19, and Tailwind v4 all shipped real breaking changes that affect this codebase directly (see [Notes on the current stack](#notes-on-the-current-stack)).
 
@@ -74,8 +74,8 @@ Add a `FRONTEND_URL` environment variable to the backend (e.g. `https://gearup.v
 
 ## Environment variables
 
-| Variable | Description |
-|---|---|
+| Variable              | Description                                                                                   |
+| --------------------- | --------------------------------------------------------------------------------------------- |
 | `NEXT_PUBLIC_API_URL` | Base URL of the GearUp backend API, including `/api` (e.g. `https://l2b7a4.onrender.com/api`) |
 
 ## Deployment (Vercel)

@@ -12,7 +12,13 @@ export const registerSchema = z
     email: z.email("Enter a valid email address"),
     password: passwordSchema,
     confirmPassword: z.string().min(1, "Please confirm your password"),
-    phone: z.string().trim().min(6, "Enter a valid phone number").max(20).optional().or(z.literal("")),
+    phone: z
+      .string()
+      .trim()
+      .min(6, "Enter a valid phone number")
+      .max(20)
+      .optional()
+      .or(z.literal("")),
     role: z.enum(["CUSTOMER", "PROVIDER"], { error: "Please select a role" }),
     businessName: z.string().trim().max(150).optional().or(z.literal("")),
     address: z.string().trim().max(255).optional().or(z.literal("")),

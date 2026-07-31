@@ -24,8 +24,12 @@ export default function NewGearPage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold mb-6">List New Gear</h1>
-      <GearForm onSubmit={handleSubmit} isSubmitting={createGear.isPending} submitLabel="List Gear" />
+      <h1 className="mb-6 text-2xl font-bold">List New Gear</h1>
+      <GearForm
+        onSubmit={handleSubmit}
+        isSubmitting={createGear.isPending}
+        submitLabel="List Gear"
+      />
     </div>
   );
 }

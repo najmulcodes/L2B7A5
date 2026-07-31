@@ -17,11 +17,11 @@ export default function AdminUsersPage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold mb-6">User Management</h1>
+      <h1 className="mb-6 text-2xl font-bold">User Management</h1>
 
-      <div className="flex flex-wrap gap-2 mb-6">
+      <div className="mb-6 flex flex-wrap gap-2">
         <label className="input input-bordered flex items-center gap-2">
-          <Search className="size-4 text-base-content/40" />
+          <Search className="text-base-content/40 size-4" />
           <input
             className="grow"
             placeholder="Search name or email"
@@ -93,7 +93,7 @@ export default function AdminUsersPage() {
                         {user.status}
                       </span>
                     </td>
-                    <td className="text-sm text-base-content/60">{formatDate(user.createdAt)}</td>
+                    <td className="text-base-content/60 text-sm">{formatDate(user.createdAt)}</td>
                     <td>
                       {user.role !== "ADMIN" && (
                         <button

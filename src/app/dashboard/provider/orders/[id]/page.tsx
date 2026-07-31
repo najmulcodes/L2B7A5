@@ -8,17 +8,17 @@ import { OrderStatusBadge } from "@/components/shared/status-badge";
 import { formatDate, formatMoney } from "@/lib/format";
 import { ApiClientError } from "@/lib/api-client";
 
-const NEXT_ACTION: Record<string, { label: string; status: "CONFIRMED" | "PICKED_UP" | "RETURNED"; icon: typeof CheckCircle2 } | undefined> = {
+const NEXT_ACTION: Record<
+  string,
+  | { label: string; status: "CONFIRMED" | "PICKED_UP" | "RETURNED"; icon: typeof CheckCircle2 }
+  | undefined
+> = {
   PLACED: { label: "Confirm Order", status: "CONFIRMED", icon: CheckCircle2 },
   PAID: { label: "Mark Picked Up", status: "PICKED_UP", icon: PackageOpen },
   PICKED_UP: { label: "Mark Returned", status: "RETURNED", icon: PackageCheck },
 };
 
-export default function ProviderOrderDetailPage({
-  params,
-}: {
-  params: Promise<{ id: string }>;
-}) {
+export default function ProviderOrderDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
   const { data: order, isLoading } = useRentalDetail(id);
   const updateStatus = useUpdateOrderStatus();
@@ -42,27 +42,27 @@ export default function ProviderOrderDetailPage({
 
   return (
     <div>
-      <div className="flex items-center justify-between mb-6 flex-wrap gap-2">
+      <div className="mb-6 flex flex-wrap items-center justify-between gap-2">
         <div>
           <h1 className="text-2xl font-bold">{order.orderNumber}</h1>
-          <p className="text-sm text-base-content/60">Placed {formatDate(order.createdAt)}</p>
+          <p className="text-base-content/60 text-sm">Placed {formatDate(order.createdAt)}</p>
         </div>
         <OrderStatusBadge status={order.status} />
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="md:col-span-2 flex flex-col gap-4">
-          <div className="card bg-base-100 border border-base-300">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+        <div className="flex flex-col gap-4 md:col-span-2">
+          <div className="card bg-base-100 border-base-300 border">
             <div className="card-body">
-              <h2 className="font-semibold mb-2">Items</h2>
+              <h2 className="mb-2 font-semibold">Items</h2>
               {order.items.map((item) => (
                 <div
                   key={item.id}
-                  className="flex items-center justify-between border-b border-base-200 py-2 last:border-0"
+                  className="border-base-200 flex items-center justify-between border-b py-2 last:border-0"
                 >
                   <div>
                     <p className="font-medium">{item.gearItem?.name ?? "Gear item"}</p>
-                    <p className="text-sm text-base-content/60">
+                    <p className="text-base-content/60 text-sm">
                       {item.quantity} x {formatMoney(item.pricePerDay)}/day x {item.days} days
                     </p>
                   </div>
@@ -73,12 +73,12 @@ export default function ProviderOrderDetailPage({
           </div>
 
           {order.deliveryAddress && (
-            <div className="card bg-base-100 border border-base-300">
+            <div className="card bg-base-100 border-base-300 border">
               <div className="card-body">
-                <h2 className="font-semibold mb-2">Delivery Address</h2>
+                <h2 className="mb-2 font-semibold">Delivery Address</h2>
                 <p className="text-sm">{order.deliveryAddress}</p>
                 {order.notes && (
-                  <p className="text-sm text-base-content/60 mt-2">Note: {order.notes}</p>
+                  <p className="text-base-content/60 mt-2 text-sm">Note: {order.notes}</p>
                 )}
               </div>
             </div>
@@ -86,17 +86,17 @@ export default function ProviderOrderDetailPage({
         </div>
 
         <div className="flex flex-col gap-4">
-          <div className="card bg-base-100 border border-base-300">
+          <div className="card bg-base-100 border-base-300 border">
             <div className="card-body">
-              <h2 className="font-semibold mb-2">Summary</h2>
-              <div className="text-sm flex flex-col gap-1">
+              <h2 className="mb-2 font-semibold">Summary</h2>
+              <div className="flex flex-col gap-1 text-sm">
                 <div className="flex justify-between">
                   <span>Rental period</span>
                   <span>
                     {formatDate(order.startDate)} - {formatDate(order.endDate)}
                   </span>
                 </div>
-                <div className="flex justify-between font-semibold border-t border-base-300 pt-1 mt-1">
+                <div className="border-base-300 mt-1 flex justify-between border-t pt-1 font-semibold">
                   <span>Total</span>
                   <span>{formatMoney(order.totalAmount)}</span>
                 </div>
@@ -104,7 +104,7 @@ export default function ProviderOrderDetailPage({
 
               {action && (
                 <button
-                  className="btn btn-primary w-full mt-4"
+                  className="btn btn-primary mt-4 w-full"
                   onClick={handleAdvance}
                   disabled={updateStatus.isPending}
                 >
@@ -113,7 +113,7 @@ export default function ProviderOrderDetailPage({
                 </button>
               )}
               {order.status === "CONFIRMED" && (
-                <p className="text-xs text-base-content/50 text-center mt-2">
+                <p className="text-base-content/50 mt-2 text-center text-xs">
                   Waiting for customer payment.
                 </p>
               )}
@@ -121,13 +121,13 @@ export default function ProviderOrderDetailPage({
           </div>
 
           {order.customer && (
-            <div className="card bg-base-100 border border-base-300">
+            <div className="card bg-base-100 border-base-300 border">
               <div className="card-body">
-                <h2 className="font-semibold mb-2">Customer</h2>
+                <h2 className="mb-2 font-semibold">Customer</h2>
                 <p className="text-sm font-medium">{order.customer.name}</p>
-                <p className="text-sm text-base-content/60">{order.customer.email}</p>
+                <p className="text-base-content/60 text-sm">{order.customer.email}</p>
                 {order.customer.phone && (
-                  <p className="text-sm text-base-content/60">{order.customer.phone}</p>
+                  <p className="text-base-content/60 text-sm">{order.customer.phone}</p>
                 )}
               </div>
             </div>

@@ -11,12 +11,12 @@ export default function AdminDashboardPage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold mb-6">Admin Dashboard</h1>
+      <h1 className="mb-6 text-2xl font-bold">Admin Dashboard</h1>
 
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+      <div className="mb-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
         <Link
           href="/dashboard/admin/users"
-          className="stat bg-base-100 border border-base-300 rounded-box hover:border-primary transition-colors"
+          className="stat bg-base-100 border-base-300 rounded-box hover:border-primary border transition-colors"
         >
           <div className="stat-figure text-primary">
             <Users className="size-6" />
@@ -26,7 +26,7 @@ export default function AdminDashboardPage() {
         </Link>
         <Link
           href="/dashboard/admin/gear"
-          className="stat bg-base-100 border border-base-300 rounded-box hover:border-primary transition-colors"
+          className="stat bg-base-100 border-base-300 rounded-box hover:border-primary border transition-colors"
         >
           <div className="stat-figure text-primary">
             <Boxes className="size-6" />
@@ -36,7 +36,7 @@ export default function AdminDashboardPage() {
         </Link>
         <Link
           href="/dashboard/admin/rentals"
-          className="stat bg-base-100 border border-base-300 rounded-box hover:border-primary transition-colors"
+          className="stat bg-base-100 border-base-300 rounded-box hover:border-primary border transition-colors"
         >
           <div className="stat-figure text-primary">
             <ListChecks className="size-6" />
@@ -46,7 +46,7 @@ export default function AdminDashboardPage() {
         </Link>
       </div>
 
-      <p className="text-sm text-base-content/60">
+      <p className="text-base-content/60 text-sm">
         Use the sidebar to manage users, oversee gear listings, and review rental orders
         platform-wide.
       </p>

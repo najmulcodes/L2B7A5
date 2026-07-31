@@ -9,7 +9,7 @@ export function HomeFeaturedGear() {
 
   if (isLoading) {
     return (
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
         {Array.from({ length: 8 }).map((_, i) => (
           <GearCardSkeleton key={i} />
         ))}
@@ -22,7 +22,7 @@ export function HomeFeaturedGear() {
   }
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+    <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
       {data.items.map((gear) => (
         <GearCard key={gear.id} gear={gear} />
       ))}

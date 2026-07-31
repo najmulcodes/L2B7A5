@@ -17,14 +17,14 @@ export default function GlobalError({
   return (
     <html lang="en" data-theme="gearup">
       <body>
-        <div className="min-h-screen flex items-center justify-center px-4">
-          <div className="text-center max-w-md">
-            <AlertTriangle className="size-16 text-error mx-auto mb-4" />
+        <div className="flex min-h-screen items-center justify-center px-4">
+          <div className="max-w-md text-center">
+            <AlertTriangle className="text-error mx-auto mb-4 size-16" />
             <h1 className="text-2xl font-bold">Something went wrong</h1>
             <p className="text-base-content/60 mt-2">
               An unexpected error occurred. You can try again, or head back home.
             </p>
-            <div className="flex items-center justify-center gap-2 mt-6">
+            <div className="mt-6 flex items-center justify-center gap-2">
               <button onClick={reset} className="btn btn-primary">
                 Try Again
               </button>

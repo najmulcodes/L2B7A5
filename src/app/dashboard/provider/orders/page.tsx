@@ -30,7 +30,7 @@ export default function ProviderOrdersPage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold mb-4">Orders</h1>
+      <h1 className="mb-4 text-2xl font-bold">Orders</h1>
 
       <div className="tabs tabs-box mb-6 w-fit flex-wrap">
         {STATUS_TABS.map((tab) => (

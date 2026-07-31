@@ -11,8 +11,8 @@ export function Pagination({
   if (meta.totalPages <= 1) return null;
 
   return (
-    <div className="flex items-center justify-between mt-6">
-      <p className="text-sm text-base-content/60">
+    <div className="mt-6 flex items-center justify-between">
+      <p className="text-base-content/60 text-sm">
         Page {meta.page} of {meta.totalPages} &middot; {meta.total} total
       </p>
       <div className="join">

@@ -15,7 +15,7 @@ export default function CustomerPaymentsPage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold mb-6">Payment History</h1>
+      <h1 className="mb-6 text-2xl font-bold">Payment History</h1>
 
       {isLoading ? (
         <div className="skeleton h-64 w-full" />
@@ -56,7 +56,7 @@ export default function CustomerPaymentsPage() {
                     <td>
                       <PaymentStatusBadge status={payment.status} />
                     </td>
-                    <td className="text-sm text-base-content/60">
+                    <td className="text-base-content/60 text-sm">
                       {payment.paidAt ? formatDateTime(payment.paidAt) : "-"}
                     </td>
                   </tr>

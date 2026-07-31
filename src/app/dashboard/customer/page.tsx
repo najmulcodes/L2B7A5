@@ -12,9 +12,9 @@ export default function CustomerDashboardPage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold mb-6">My Dashboard</h1>
+      <h1 className="mb-6 text-2xl font-bold">My Dashboard</h1>
 
-      <div className="flex items-center justify-between mb-4">
+      <div className="mb-4 flex items-center justify-between">
         <h2 className="font-semibold">Recent orders</h2>
         <Link href="/dashboard/customer/orders" className="link link-primary text-sm">
           View all

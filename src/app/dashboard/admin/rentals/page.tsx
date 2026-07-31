@@ -44,7 +44,7 @@ export default function AdminRentalsPage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold mb-6">All Rental Orders</h1>
+      <h1 className="mb-6 text-2xl font-bold">All Rental Orders</h1>
 
       <select
         className="select select-bordered mb-6"
@@ -85,7 +85,7 @@ export default function AdminRentalsPage() {
                   <tr key={order.id} className="hover:bg-base-200">
                     <td>
                       <p className="font-medium">{order.orderNumber}</p>
-                      <p className="text-xs text-base-content/50">
+                      <p className="text-base-content/50 text-xs">
                         {formatDate(order.startDate)} - {formatDate(order.endDate)}
                       </p>
                     </td>

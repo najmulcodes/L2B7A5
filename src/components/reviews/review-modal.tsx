@@ -47,10 +47,10 @@ export function ReviewModal({
   return (
     <dialog open className="modal modal-open">
       <div className="modal-box">
-        <h3 className="font-bold text-lg">Leave a review</h3>
-        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-3 mt-4" noValidate>
+        <h3 className="text-lg font-bold">Leave a review</h3>
+        <form onSubmit={handleSubmit(onSubmit)} className="mt-4 flex flex-col gap-3" noValidate>
           <input type="hidden" {...register("rating")} />
-          <div className="flex items-center gap-1 justify-center">
+          <div className="flex items-center justify-center gap-1">
             {[1, 2, 3, 4, 5].map((value) => (
               <button
                 key={value}
@@ -67,7 +67,7 @@ export function ReviewModal({
             ))}
           </div>
           {errors.rating && (
-            <p className="text-xs text-error text-center">{errors.rating.message}</p>
+            <p className="text-error text-center text-xs">{errors.rating.message}</p>
           )}
 
           <textarea

@@ -41,7 +41,7 @@ export function PaymentResultClient() {
   if (!transactionId || outcome === "cancel") {
     return (
       <ResultShell
-        icon={<XCircle className="size-16 text-warning" />}
+        icon={<XCircle className="text-warning size-16" />}
         title="Payment Cancelled"
         message="You cancelled the payment. No charge was made. You can try again from your order."
       />
@@ -51,7 +51,7 @@ export function PaymentResultClient() {
   if (isVerifying) {
     return (
       <ResultShell
-        icon={<Loader2 className="size-16 text-primary animate-spin" />}
+        icon={<Loader2 className="text-primary size-16 animate-spin" />}
         title="Verifying your payment..."
         message="Please wait while we confirm this transaction with the payment gateway."
       />
@@ -61,7 +61,7 @@ export function PaymentResultClient() {
   if (error || result?.status === "FAILED") {
     return (
       <ResultShell
-        icon={<XCircle className="size-16 text-error" />}
+        icon={<XCircle className="text-error size-16" />}
         title="Payment Failed"
         message={error ?? "This payment could not be completed. Please try again."}
       />
@@ -71,7 +71,7 @@ export function PaymentResultClient() {
   if (result?.status === "COMPLETED") {
     return (
       <ResultShell
-        icon={<CheckCircle2 className="size-16 text-success" />}
+        icon={<CheckCircle2 className="text-success size-16" />}
         title="Payment Successful"
         message={`Your payment of ${result.amount} ${result.currency} was confirmed. Your order status has been updated to PAID.`}
         orderId={result.rentalOrderId}
@@ -81,7 +81,7 @@ export function PaymentResultClient() {
 
   return (
     <ResultShell
-      icon={<Loader2 className="size-16 text-primary animate-spin" />}
+      icon={<Loader2 className="text-primary size-16 animate-spin" />}
       title="Processing"
       message="Your payment is still being processed by the gateway. Check your order in a moment."
     />
@@ -100,13 +100,13 @@ function ResultShell({
   orderId?: string;
 }) {
   return (
-    <div className="min-h-[60vh] flex items-center justify-center px-4">
-      <div className="card bg-base-100 border border-base-300 shadow-lg max-w-md w-full">
+    <div className="flex min-h-[60vh] items-center justify-center px-4">
+      <div className="card bg-base-100 border-base-300 w-full max-w-md border shadow-lg">
         <div className="card-body items-center text-center">
           {icon}
-          <h1 className="text-xl font-bold mt-2">{title}</h1>
-          <p className="text-base-content/60 text-sm mt-1">{message}</p>
-          <div className="flex gap-2 mt-4">
+          <h1 className="mt-2 text-xl font-bold">{title}</h1>
+          <p className="text-base-content/60 mt-1 text-sm">{message}</p>
+          <div className="mt-4 flex gap-2">
             {orderId && (
               <Link href={`/dashboard/customer/orders/${orderId}`} className="btn btn-primary">
                 View Order

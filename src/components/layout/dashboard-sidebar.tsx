@@ -46,8 +46,8 @@ export function DashboardSidebar() {
   if (!items) return null;
 
   return (
-    <aside className="w-full lg:w-56 shrink-0">
-      <ul className="menu bg-base-100 rounded-box border border-base-300 lg:sticky lg:top-20 gap-1">
+    <aside className="w-full shrink-0 lg:w-56">
+      <ul className="menu bg-base-100 rounded-box border-base-300 gap-1 border lg:sticky lg:top-20">
         {items.map((item) => {
           const active = pathname === item.href;
           const Icon = item.icon;

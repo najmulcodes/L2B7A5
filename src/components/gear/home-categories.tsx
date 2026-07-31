@@ -8,7 +8,7 @@ export function HomeCategories() {
 
   if (isLoading) {
     return (
-      <div className="flex gap-2 flex-wrap">
+      <div className="flex flex-wrap gap-2">
         {Array.from({ length: 6 }).map((_, i) => (
           <div key={i} className="skeleton h-9 w-28 rounded-full" />
         ))}
@@ -17,7 +17,7 @@ export function HomeCategories() {
   }
 
   return (
-    <div className="flex gap-2 flex-wrap">
+    <div className="flex flex-wrap gap-2">
       {data?.map((category) => (
         <Link
           key={category.id}

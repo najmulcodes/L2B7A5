@@ -19,9 +19,9 @@ export function FormField({
         {label}
       </label>
       {children}
-      {hint && !error && <p className="text-xs text-base-content/50 mt-1">{hint}</p>}
+      {hint && !error && <p className="text-base-content/50 mt-1 text-xs">{hint}</p>}
       {error && (
-        <p role="alert" className="text-xs text-error mt-1">
+        <p role="alert" className="text-error mt-1 text-xs">
           {error}
         </p>
       )}

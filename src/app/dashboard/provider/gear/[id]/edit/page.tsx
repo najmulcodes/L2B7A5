@@ -41,7 +41,7 @@ export default function EditGearPage({ params }: { params: Promise<{ id: string 
 
   return (
     <div>
-      <div className="flex items-center justify-between mb-6 max-w-2xl">
+      <div className="mb-6 flex max-w-2xl items-center justify-between">
         <h1 className="text-2xl font-bold">Edit Gear</h1>
         <button className="btn btn-outline btn-error btn-sm" onClick={handleDelete}>
           <Trash2 className="size-4" /> Remove Listing

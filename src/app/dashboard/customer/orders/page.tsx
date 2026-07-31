@@ -30,7 +30,7 @@ export default function CustomerOrdersPage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold mb-4">My Orders</h1>
+      <h1 className="mb-4 text-2xl font-bold">My Orders</h1>
 
       <div className="tabs tabs-box mb-6 w-fit">
         {STATUS_TABS.map((tab) => (
@@ -58,12 +58,12 @@ export default function CustomerOrdersPage() {
               <Link
                 key={order.id}
                 href={`/dashboard/customer/orders/${order.id}`}
-                className="card bg-base-100 border border-base-300 hover:border-primary transition-colors"
+                className="card bg-base-100 border-base-300 hover:border-primary border transition-colors"
               >
-                <div className="card-body p-4 flex-row items-center justify-between flex-wrap gap-2">
+                <div className="card-body flex-row flex-wrap items-center justify-between gap-2 p-4">
                   <div>
                     <p className="font-semibold">{order.orderNumber}</p>
-                    <p className="text-sm text-base-content/60">
+                    <p className="text-base-content/60 text-sm">
                       {formatDate(order.startDate)} - {formatDate(order.endDate)} &middot;{" "}
                       {order.items.length} item(s)
                     </p>

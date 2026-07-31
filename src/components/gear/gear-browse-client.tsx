@@ -55,10 +55,10 @@ export function GearBrowseClient() {
   );
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-8">
-      <div className="flex flex-col md:flex-row gap-8">
-        <aside className="md:w-64 shrink-0">
-          <div className="flex items-center gap-2 font-semibold mb-4">
+    <div className="mx-auto max-w-6xl px-4 py-8">
+      <div className="flex flex-col gap-8 md:flex-row">
+        <aside className="shrink-0 md:w-64">
+          <div className="mb-4 flex items-center gap-2 font-semibold">
             <SlidersHorizontal className="size-4" />
             Filters
           </div>
@@ -128,7 +128,7 @@ export function GearBrowseClient() {
             </div>
           </div>
 
-          <label className="label cursor-pointer justify-start gap-2 mt-2">
+          <label className="label mt-2 cursor-pointer justify-start gap-2">
             <input
               type="checkbox"
               className="checkbox checkbox-primary checkbox-sm"
@@ -139,10 +139,10 @@ export function GearBrowseClient() {
           </label>
         </aside>
 
-        <div className="flex-1 min-w-0">
-          <div className="flex flex-col sm:flex-row gap-3 mb-6">
-            <label className="input input-bordered flex items-center gap-2 grow">
-              <Search className="size-4 text-base-content/40" />
+        <div className="min-w-0 flex-1">
+          <div className="mb-6 flex flex-col gap-3 sm:flex-row">
+            <label className="input input-bordered flex grow items-center gap-2">
+              <Search className="text-base-content/40 size-4" />
               <input
                 type="text"
                 className="grow"
@@ -169,7 +169,7 @@ export function GearBrowseClient() {
           </div>
 
           {isLoading ? (
-            <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="grid grid-cols-2 gap-4 lg:grid-cols-3">
               {Array.from({ length: 6 }).map((_, i) => (
                 <GearCardSkeleton key={i} />
               ))}
@@ -181,7 +181,7 @@ export function GearBrowseClient() {
             />
           ) : (
             <>
-              <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
+              <div className="grid grid-cols-2 gap-4 lg:grid-cols-3">
                 {data.items.map((gear) => (
                   <GearCard key={gear.id} gear={gear} />
                 ))}

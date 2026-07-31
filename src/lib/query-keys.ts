@@ -11,8 +11,7 @@ export const queryKeys = {
   rentals: {
     mine: (filters?: object) => ["rentals", "mine", filters] as const,
     detail: (id: string) => ["rentals", "detail", id] as const,
-    providerOrders: (filters?: object) =>
-      ["rentals", "provider", filters] as const,
+    providerOrders: (filters?: object) => ["rentals", "provider", filters] as const,
   },
   payments: {
     mine: (filters?: object) => ["payments", "mine", filters] as const,

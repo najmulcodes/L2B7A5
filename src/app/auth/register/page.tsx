@@ -52,33 +52,23 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center px-4 py-12 bg-base-200">
-      <div className="card w-full max-w-md bg-base-100 shadow-xl border border-base-300">
+    <div className="bg-base-200 flex min-h-[calc(100vh-4rem)] items-center justify-center px-4 py-12">
+      <div className="card bg-base-100 border-base-300 w-full max-w-md border shadow-xl">
         <div className="card-body">
-          <h1 className="text-2xl font-bold text-center">Create your account</h1>
-          <p className="text-center text-base-content/60 text-sm mb-4">
+          <h1 className="text-center text-2xl font-bold">Create your account</h1>
+          <p className="text-base-content/60 mb-4 text-center text-sm">
             Rent gear or start listing your own
           </p>
 
           <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-2" noValidate>
             <FormField label="I want to" htmlFor="role">
               <div className="join w-full">
-                <label className="join-item btn grow has-checked:btn-primary">
-                  <input
-                    type="radio"
-                    value="CUSTOMER"
-                    className="hidden"
-                    {...register("role")}
-                  />
+                <label className="join-item btn has-checked:btn-primary grow">
+                  <input type="radio" value="CUSTOMER" className="hidden" {...register("role")} />
                   Rent gear
                 </label>
-                <label className="join-item btn grow has-checked:btn-primary">
-                  <input
-                    type="radio"
-                    value="PROVIDER"
-                    className="hidden"
-                    {...register("role")}
-                  />
+                <label className="join-item btn has-checked:btn-primary grow">
+                  <input type="radio" value="PROVIDER" className="hidden" {...register("role")} />
                   List my gear
                 </label>
               </div>
@@ -163,7 +153,7 @@ export default function RegisterPage() {
             </FormField>
 
             {errors.root && (
-              <div role="alert" className="alert alert-error text-sm py-2">
+              <div role="alert" className="alert alert-error py-2 text-sm">
                 <span>{errors.root.message}</span>
               </div>
             )}
@@ -182,7 +172,7 @@ export default function RegisterPage() {
             </button>
           </form>
 
-          <p className="text-center text-sm text-base-content/60 mt-4">
+          <p className="text-base-content/60 mt-4 text-center text-sm">
             Already have an account?{" "}
             <Link href="/auth/login" className="link link-primary font-medium">
               Log in

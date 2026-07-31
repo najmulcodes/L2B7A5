@@ -58,12 +58,12 @@ export function GearDetailClient({ gearId }: { gearId: string }) {
   }, [gear, days, quantity]);
 
   if (isLoading) {
-    return <div className="max-w-6xl mx-auto px-4 py-12 text-center">Loading gear...</div>;
+    return <div className="mx-auto max-w-6xl px-4 py-12 text-center">Loading gear...</div>;
   }
 
   if (!gear) {
     return (
-      <div className="max-w-6xl mx-auto px-4 py-16 text-center">
+      <div className="mx-auto max-w-6xl px-4 py-16 text-center">
         <h1 className="text-xl font-semibold">Gear not found</h1>
         <Link href="/gear" className="link link-primary mt-2 inline-block">
           Back to browse
@@ -100,11 +100,11 @@ export function GearDetailClient({ gearId }: { gearId: string }) {
   };
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-8">
-      <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
+    <div className="mx-auto max-w-6xl px-4 py-8">
+      <div className="grid grid-cols-1 gap-8 lg:grid-cols-5">
         {/* Gallery + details */}
         <div className="lg:col-span-3">
-          <div className="relative aspect-4/3 bg-base-200 rounded-box overflow-hidden">
+          <div className="bg-base-200 rounded-box relative aspect-4/3 overflow-hidden">
             {gear.images[activeImage] ? (
               <Image
                 src={gear.images[activeImage]!}
@@ -115,18 +115,18 @@ export function GearDetailClient({ gearId }: { gearId: string }) {
                 priority
               />
             ) : (
-              <div className="flex items-center justify-center h-full text-base-content/30">
+              <div className="text-base-content/30 flex h-full items-center justify-center">
                 No image
               </div>
             )}
           </div>
           {gear.images.length > 1 && (
-            <div className="flex gap-2 mt-2 overflow-x-auto">
+            <div className="mt-2 flex gap-2 overflow-x-auto">
               {gear.images.map((img, i) => (
                 <button
                   key={img + i}
                   onClick={() => setActiveImage(i)}
-                  className={`relative size-16 shrink-0 rounded-field overflow-hidden border-2 ${
+                  className={`rounded-field relative size-16 shrink-0 overflow-hidden border-2 ${
                     i === activeImage ? "border-primary" : "border-transparent"
                   }`}
                 >
@@ -142,28 +142,28 @@ export function GearDetailClient({ gearId }: { gearId: string }) {
                 {gear.category.name}
               </Link>
             )}
-            <h1 className="text-2xl font-bold mt-2">{gear.name}</h1>
-            <div className="flex flex-wrap items-center gap-4 mt-2 text-sm text-base-content/60">
+            <h1 className="mt-2 text-2xl font-bold">{gear.name}</h1>
+            <div className="text-base-content/60 mt-2 flex flex-wrap items-center gap-4 text-sm">
               <span className="flex items-center gap-1">
                 <MapPin className="size-4" /> {gear.location}
               </span>
               {gear.reviewCount > 0 && (
                 <span className="flex items-center gap-1">
-                  <Star className="size-4 fill-warning text-warning" /> {gear.avgRating.toFixed(1)}{" "}
+                  <Star className="fill-warning text-warning size-4" /> {gear.avgRating.toFixed(1)}{" "}
                   ({gear.reviewCount} reviews)
                 </span>
               )}
               <span className="badge badge-ghost">{gear.condition.replace("_", " ")}</span>
             </div>
 
-            <p className="mt-4 text-base-content/80 whitespace-pre-line">{gear.description}</p>
+            <p className="text-base-content/80 mt-4 whitespace-pre-line">{gear.description}</p>
 
             {gear.specifications && Object.keys(gear.specifications).length > 0 && (
               <div className="mt-4">
-                <h3 className="font-semibold mb-2">Specifications</h3>
+                <h3 className="mb-2 font-semibold">Specifications</h3>
                 <dl className="grid grid-cols-2 gap-2 text-sm">
                   {Object.entries(gear.specifications).map(([key, value]) => (
-                    <div key={key} className="flex justify-between border-b border-base-200 py-1">
+                    <div key={key} className="border-base-200 flex justify-between border-b py-1">
                       <dt className="text-base-content/60 capitalize">{key}</dt>
                       <dd className="font-medium">{String(value)}</dd>
                     </div>
@@ -173,15 +173,15 @@ export function GearDetailClient({ gearId }: { gearId: string }) {
             )}
 
             {gear.provider && (
-              <div className="mt-6 p-4 rounded-box border border-base-300 flex items-center gap-3">
+              <div className="rounded-box border-base-300 mt-6 flex items-center gap-3 border p-4">
                 <div className="avatar avatar-placeholder">
-                  <div className="bg-neutral text-neutral-content rounded-full w-10">
+                  <div className="bg-neutral text-neutral-content w-10 rounded-full">
                     <span>{gear.provider.name.charAt(0).toUpperCase()}</span>
                   </div>
                 </div>
                 <div>
                   <p className="font-medium">{gear.provider.businessName ?? gear.provider.name}</p>
-                  <p className="text-xs text-base-content/60 flex items-center gap-1">
+                  <p className="text-base-content/60 flex items-center gap-1 text-xs">
                     <ShieldCheck className="size-3.5" /> Verified provider
                   </p>
                 </div>
@@ -189,15 +189,15 @@ export function GearDetailClient({ gearId }: { gearId: string }) {
             )}
 
             <div className="mt-8">
-              <h3 className="font-semibold mb-3">Reviews ({reviews?.length ?? 0})</h3>
+              <h3 className="mb-3 font-semibold">Reviews ({reviews?.length ?? 0})</h3>
               {!reviews?.length ? (
-                <p className="text-sm text-base-content/50">No reviews yet.</p>
+                <p className="text-base-content/50 text-sm">No reviews yet.</p>
               ) : (
                 <div className="flex flex-col gap-4">
                   {reviews.map((review) => (
-                    <div key={review.id} className="border-b border-base-200 pb-4">
+                    <div key={review.id} className="border-base-200 border-b pb-4">
                       <div className="flex items-center justify-between">
-                        <span className="font-medium text-sm">
+                        <span className="text-sm font-medium">
                           {review.customer?.name ?? "Anonymous"}
                         </span>
                         <div className="flex items-center gap-0.5">
@@ -214,9 +214,9 @@ export function GearDetailClient({ gearId }: { gearId: string }) {
                         </div>
                       </div>
                       {review.comment && (
-                        <p className="text-sm text-base-content/70 mt-1">{review.comment}</p>
+                        <p className="text-base-content/70 mt-1 text-sm">{review.comment}</p>
                       )}
-                      <p className="text-xs text-base-content/40 mt-1">
+                      <p className="text-base-content/40 mt-1 text-xs">
                         {formatDate(review.createdAt)}
                       </p>
                     </div>
@@ -229,12 +229,12 @@ export function GearDetailClient({ gearId }: { gearId: string }) {
 
         {/* Rent form */}
         <div className="lg:col-span-2">
-          <div className="card bg-base-100 border border-base-300 shadow-sm sticky top-20">
+          <div className="card bg-base-100 border-base-300 sticky top-20 border shadow-sm">
             <div className="card-body">
               <div className="flex items-baseline justify-between">
-                <span className="text-2xl font-bold text-primary">
+                <span className="text-primary text-2xl font-bold">
                   {formatMoney(gear.pricePerDay)}
-                  <span className="text-sm font-normal text-base-content/60">/day</span>
+                  <span className="text-base-content/60 text-sm font-normal">/day</span>
                 </span>
                 <span
                   className={`badge ${gear.quantityAvailable > 0 ? "badge-success" : "badge-error"}`}
@@ -246,11 +246,15 @@ export function GearDetailClient({ gearId }: { gearId: string }) {
               </div>
 
               {!mounted ? null : gear.quantityAvailable === 0 ? (
-                <p className="text-sm text-base-content/60 mt-4">
+                <p className="text-base-content/60 mt-4 text-sm">
                   This gear is fully booked right now. Check back later.
                 </p>
               ) : (
-                <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-2 mt-2" noValidate>
+                <form
+                  onSubmit={handleSubmit(onSubmit)}
+                  className="mt-2 flex flex-col gap-2"
+                  noValidate
+                >
                   <FormField label="Quantity" htmlFor="quantity" error={errors.quantity?.message}>
                     <input
                       id="quantity"
@@ -310,8 +314,8 @@ export function GearDetailClient({ gearId }: { gearId: string }) {
                   </FormField>
 
                   {totals && (
-                    <div className="bg-base-200 rounded-box p-3 text-sm flex flex-col gap-1 mt-2">
-                      <div className="flex items-center gap-1 text-base-content/60 mb-1">
+                    <div className="bg-base-200 rounded-box mt-2 flex flex-col gap-1 p-3 text-sm">
+                      <div className="text-base-content/60 mb-1 flex items-center gap-1">
                         <CalendarDays className="size-3.5" />
                         {totals.days} day{totals.days > 1 ? "s" : ""}
                       </div>
@@ -323,7 +327,7 @@ export function GearDetailClient({ gearId }: { gearId: string }) {
                         <span>Security deposit</span>
                         <span>{formatMoney(totals.deposit)}</span>
                       </div>
-                      <div className="flex justify-between font-semibold border-t border-base-300 pt-1 mt-1">
+                      <div className="border-base-300 mt-1 flex justify-between border-t pt-1 font-semibold">
                         <span>Total</span>
                         <span>{formatMoney(totals.total)}</span>
                       </div>
@@ -338,7 +342,7 @@ export function GearDetailClient({ gearId }: { gearId: string }) {
                     {createRental.isPending && <Loader2 className="size-4 animate-spin" />}
                     {!mounted || user ? "Request to Rent" : "Log in to Rent"}
                   </button>
-                  <p className="text-xs text-base-content/50 text-center">
+                  <p className="text-base-content/50 text-center text-xs">
                     You won&apos;t be charged yet - payment happens after the provider confirms.
                   </p>
                 </form>

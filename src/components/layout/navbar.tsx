@@ -25,7 +25,7 @@ export function Navbar() {
   const showAuthUi = mounted && isHydrated;
 
   return (
-    <div className="navbar bg-base-100 border-b border-base-300 px-4 lg:px-8 sticky top-0 z-40">
+    <div className="navbar bg-base-100 border-base-300 sticky top-0 z-40 border-b px-4 lg:px-8">
       <div className="navbar-start">
         <div className="dropdown lg:hidden">
           <label tabIndex={0} className="btn btn-ghost btn-circle" aria-label="Open menu">
@@ -33,7 +33,7 @@ export function Navbar() {
           </label>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-56 p-2 shadow-lg border border-base-300"
+            className="menu menu-sm dropdown-content bg-base-100 rounded-box border-base-300 z-50 mt-3 w-56 border p-2 shadow-lg"
           >
             <li>
               <Link href="/gear">Browse Gear</Link>
@@ -59,8 +59,8 @@ export function Navbar() {
             )}
           </ul>
         </div>
-        <Link href="/" className="btn btn-ghost text-xl gap-2 px-2">
-          <Backpack className="size-6 text-primary" />
+        <Link href="/" className="btn btn-ghost gap-2 px-2 text-xl">
+          <Backpack className="text-primary size-6" />
           <span className="font-bold">GearUp</span>
         </Link>
       </div>
@@ -75,18 +75,18 @@ export function Navbar() {
 
       <div className="navbar-end gap-2">
         {!showAuthUi ? (
-          <div className="skeleton h-9 w-24 rounded-field" />
+          <div className="skeleton rounded-field h-9 w-24" />
         ) : user ? (
           <div className="dropdown dropdown-end">
             <label tabIndex={0} className="btn btn-ghost gap-2">
               <UserIcon className="size-4" />
-              <span className="hidden sm:inline max-w-[10rem] truncate">
+              <span className="hidden max-w-[10rem] truncate sm:inline">
                 {user.name || user.email}
               </span>
             </label>
             <ul
               tabIndex={0}
-              className="menu dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow-lg border border-base-300"
+              className="menu dropdown-content bg-base-100 rounded-box border-base-300 z-50 mt-3 w-52 border p-2 shadow-lg"
             >
               <li>
                 <Link href={dashboardPath(user.role)}>

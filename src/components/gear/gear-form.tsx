@@ -40,9 +40,13 @@ export function GearForm({
   const { fields, append, remove } = useFieldArray({ control, name: "images" });
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-3 max-w-2xl" noValidate>
+    <form onSubmit={handleSubmit(onSubmit)} className="flex max-w-2xl flex-col gap-3" noValidate>
       <FormField label="Category" htmlFor="categoryId" error={errors.categoryId?.message}>
-        <select id="categoryId" className="select select-bordered w-full" {...register("categoryId")}>
+        <select
+          id="categoryId"
+          className="select select-bordered w-full"
+          {...register("categoryId")}
+        >
           <option value="">Select a category</option>
           {categories?.map((c) => (
             <option key={c.id} value={c.id}>
@@ -70,7 +74,11 @@ export function GearForm({
           <input id="brand" className="input input-bordered w-full" {...register("brand")} />
         </FormField>
         <FormField label="Condition" htmlFor="condition" error={errors.condition?.message}>
-          <select id="condition" className="select select-bordered w-full" {...register("condition")}>
+          <select
+            id="condition"
+            className="select select-bordered w-full"
+            {...register("condition")}
+          >
             {gearConditions.map((c) => (
               <option key={c} value={c}>
                 {c.replace("_", " ")}
@@ -124,7 +132,7 @@ export function GearForm({
         <label className="fieldset-legend text-sm font-medium">Image URLs</label>
         <div className="flex flex-col gap-2">
           {fields.map((field, index) => (
-            <div key={field.id} className="flex gap-2 items-start">
+            <div key={field.id} className="flex items-start gap-2">
               <div className="flex-1">
                 <input
                   className="input input-bordered w-full"
@@ -132,7 +140,7 @@ export function GearForm({
                   {...register(`images.${index}.value` as const)}
                 />
                 {errors.images?.[index]?.value && (
-                  <p className="text-xs text-error mt-1">{errors.images[index]?.value?.message}</p>
+                  <p className="text-error mt-1 text-xs">{errors.images[index]?.value?.message}</p>
                 )}
               </div>
               <button
@@ -147,10 +155,12 @@ export function GearForm({
             </div>
           ))}
         </div>
-        {errors.images?.message && <p className="text-xs text-error mt-1">{errors.images.message}</p>}
+        {errors.images?.message && (
+          <p className="text-error mt-1 text-xs">{errors.images.message}</p>
+        )}
         <button
           type="button"
-          className="btn btn-outline btn-sm w-fit mt-2"
+          className="btn btn-outline btn-sm mt-2 w-fit"
           onClick={() => append({ value: "" })}
         >
           <Plus className="size-4" /> Add image

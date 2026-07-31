@@ -11,11 +11,7 @@ import { formatDate, formatMoney } from "@/lib/format";
 import { ApiClientError } from "@/lib/api-client";
 import { ReviewModal } from "@/components/reviews/review-modal";
 
-export default function CustomerOrderDetailPage({
-  params,
-}: {
-  params: Promise<{ id: string }>;
-}) {
+export default function CustomerOrderDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
   const { data: order, isLoading } = useRentalDetail(id);
   const createPayment = useCreatePayment();
@@ -52,33 +48,33 @@ export default function CustomerOrderDetailPage({
 
   return (
     <div>
-      <div className="flex items-center justify-between mb-6 flex-wrap gap-2">
+      <div className="mb-6 flex flex-wrap items-center justify-between gap-2">
         <div>
           <h1 className="text-2xl font-bold">{order.orderNumber}</h1>
-          <p className="text-sm text-base-content/60">Placed {formatDate(order.createdAt)}</p>
+          <p className="text-base-content/60 text-sm">Placed {formatDate(order.createdAt)}</p>
         </div>
         <OrderStatusBadge status={order.status} />
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="md:col-span-2 flex flex-col gap-4">
-          <div className="card bg-base-100 border border-base-300">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+        <div className="flex flex-col gap-4 md:col-span-2">
+          <div className="card bg-base-100 border-base-300 border">
             <div className="card-body">
-              <h2 className="font-semibold mb-2">Items</h2>
+              <h2 className="mb-2 font-semibold">Items</h2>
               <div className="flex flex-col gap-3">
                 {order.items.map((item) => (
                   <div
                     key={item.id}
-                    className="flex items-center justify-between border-b border-base-200 pb-3 last:border-0 last:pb-0"
+                    className="border-base-200 flex items-center justify-between border-b pb-3 last:border-0 last:pb-0"
                   >
                     <div>
                       <Link
                         href={`/gear/${item.gearItemId}`}
-                        className="font-medium link link-hover"
+                        className="link link-hover font-medium"
                       >
                         {item.gearItem?.name ?? "Gear item"}
                       </Link>
-                      <p className="text-sm text-base-content/60">
+                      <p className="text-base-content/60 text-sm">
                         {item.quantity} x {formatMoney(item.pricePerDay)}/day x {item.days} days
                       </p>
                     </div>
@@ -100,14 +96,14 @@ export default function CustomerOrderDetailPage({
           </div>
 
           {order.deliveryAddress && (
-            <div className="card bg-base-100 border border-base-300">
+            <div className="card bg-base-100 border-base-300 border">
               <div className="card-body">
-                <h2 className="font-semibold mb-2 flex items-center gap-2">
+                <h2 className="mb-2 flex items-center gap-2 font-semibold">
                   <MapPin className="size-4" /> Delivery Address
                 </h2>
                 <p className="text-sm">{order.deliveryAddress}</p>
                 {order.notes && (
-                  <p className="text-sm text-base-content/60 mt-2">Note: {order.notes}</p>
+                  <p className="text-base-content/60 mt-2 text-sm">Note: {order.notes}</p>
                 )}
               </div>
             </div>
@@ -121,10 +117,10 @@ export default function CustomerOrderDetailPage({
         </div>
 
         <div className="flex flex-col gap-4">
-          <div className="card bg-base-100 border border-base-300">
+          <div className="card bg-base-100 border-base-300 border">
             <div className="card-body">
-              <h2 className="font-semibold mb-2">Summary</h2>
-              <div className="text-sm flex flex-col gap-1">
+              <h2 className="mb-2 font-semibold">Summary</h2>
+              <div className="flex flex-col gap-1 text-sm">
                 <div className="flex justify-between">
                   <span>Rental period</span>
                   <span>
@@ -139,7 +135,7 @@ export default function CustomerOrderDetailPage({
                   <span>Deposit</span>
                   <span>{formatMoney(order.depositTotal)}</span>
                 </div>
-                <div className="flex justify-between font-semibold border-t border-base-300 pt-1 mt-1">
+                <div className="border-base-300 mt-1 flex justify-between border-t pt-1 font-semibold">
                   <span>Total</span>
                   <span>{formatMoney(order.totalAmount)}</span>
                 </div>
@@ -147,7 +143,7 @@ export default function CustomerOrderDetailPage({
 
               {order.status === "CONFIRMED" && (
                 <button
-                  className="btn btn-primary w-full mt-4"
+                  className="btn btn-primary mt-4 w-full"
                   onClick={handlePay}
                   disabled={createPayment.isPending}
                 >
@@ -162,7 +158,7 @@ export default function CustomerOrderDetailPage({
 
               {order.status === "PLACED" && (
                 <button
-                  className="btn btn-outline btn-error w-full mt-4"
+                  className="btn btn-outline btn-error mt-4 w-full"
                   onClick={handleCancel}
                   disabled={cancelOrder.isPending}
                 >
@@ -174,14 +170,14 @@ export default function CustomerOrderDetailPage({
           </div>
 
           {order.provider && (
-            <div className="card bg-base-100 border border-base-300">
+            <div className="card bg-base-100 border-base-300 border">
               <div className="card-body">
-                <h2 className="font-semibold mb-2">Provider</h2>
+                <h2 className="mb-2 font-semibold">Provider</h2>
                 <p className="text-sm font-medium">
                   {order.provider.businessName ?? order.provider.name}
                 </p>
                 {order.provider.phone && (
-                  <p className="text-sm text-base-content/60">{order.provider.phone}</p>
+                  <p className="text-base-content/60 text-sm">{order.provider.phone}</p>
                 )}
               </div>
             </div>

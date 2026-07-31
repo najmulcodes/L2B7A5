@@ -1,9 +1,9 @@
 export default function GearLoading() {
   return (
-    <div className="max-w-6xl mx-auto px-4 py-8">
-      <div className="flex flex-col md:flex-row gap-8">
-        <div className="md:w-64 shrink-0 skeleton h-96" />
-        <div className="flex-1 grid grid-cols-2 lg:grid-cols-3 gap-4">
+    <div className="mx-auto max-w-6xl px-4 py-8">
+      <div className="flex flex-col gap-8 md:flex-row">
+        <div className="skeleton h-96 shrink-0 md:w-64" />
+        <div className="grid flex-1 grid-cols-2 gap-4 lg:grid-cols-3">
           {Array.from({ length: 6 }).map((_, i) => (
             <div key={i} className="skeleton aspect-4/3" />
           ))}

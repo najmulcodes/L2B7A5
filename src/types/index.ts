@@ -2,12 +2,7 @@ export type UserRole = "CUSTOMER" | "PROVIDER" | "ADMIN";
 export type UserStatus = "ACTIVE" | "SUSPENDED";
 export type GearCondition = "NEW" | "LIKE_NEW" | "GOOD" | "FAIR";
 export type RentalOrderStatus =
-  | "PLACED"
-  | "CONFIRMED"
-  | "CANCELLED"
-  | "PAID"
-  | "PICKED_UP"
-  | "RETURNED";
+  "PLACED" | "CONFIRMED" | "CANCELLED" | "PAID" | "PICKED_UP" | "RETURNED";
 export type PaymentStatus = "PENDING" | "COMPLETED" | "FAILED" | "REFUNDED";
 
 export interface User {

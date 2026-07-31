@@ -35,11 +35,11 @@ export function LoginForm() {
   };
 
   return (
-    <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center px-4 py-12 bg-base-200">
-      <div className="card w-full max-w-md bg-base-100 shadow-xl border border-base-300">
+    <div className="bg-base-200 flex min-h-[calc(100vh-4rem)] items-center justify-center px-4 py-12">
+      <div className="card bg-base-100 border-base-300 w-full max-w-md border shadow-xl">
         <div className="card-body">
-          <h1 className="text-2xl font-bold text-center">Welcome back</h1>
-          <p className="text-center text-base-content/60 text-sm mb-4">
+          <h1 className="text-center text-2xl font-bold">Welcome back</h1>
+          <p className="text-base-content/60 mb-4 text-center text-sm">
             Log in to your GearUp account
           </p>
 
@@ -67,7 +67,7 @@ export function LoginForm() {
             </FormField>
 
             {errors.root && (
-              <div role="alert" className="alert alert-error text-sm py-2">
+              <div role="alert" className="alert alert-error py-2 text-sm">
                 <span>{errors.root.message}</span>
               </div>
             )}
@@ -82,7 +82,7 @@ export function LoginForm() {
             </button>
           </form>
 
-          <p className="text-center text-sm text-base-content/60 mt-4">
+          <p className="text-base-content/60 mt-4 text-center text-sm">
             Don&apos;t have an account?{" "}
             <Link href="/auth/register" className="link link-primary font-medium">
               Sign up

@@ -13,7 +13,7 @@ export default function AdminGearPage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold mb-6">Gear Oversight</h1>
+      <h1 className="mb-6 text-2xl font-bold">Gear Oversight</h1>
 
       {isLoading ? (
         <div className="skeleton h-64 w-full" />
@@ -37,7 +37,7 @@ export default function AdminGearPage() {
                 {data.items.map((item) => (
                   <tr key={item.id} className="hover:bg-base-200">
                     <td>
-                      <div className="relative size-10 rounded overflow-hidden bg-base-200">
+                      <div className="bg-base-200 relative size-10 overflow-hidden rounded">
                         {item.images[0] && (
                           <Image src={item.images[0]} alt="" fill className="object-cover" />
                         )}
