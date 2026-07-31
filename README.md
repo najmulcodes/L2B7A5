@@ -93,6 +93,10 @@ No `vercel.json` is needed - Next.js App Router projects deploy to Vercel zero-c
 - **Editing inactive gear isn't supported.** The edit page fetches via the public gear-detail endpoint, which only serves active listings (there's no dedicated `GET /api/provider/gear/:id` on the backend). A provider can still deactivate/reactivate via the update endpoint's `isActive` field; they just can't load an already-inactive item back into the edit form. Same class of scope tradeoff as the backend's documented simplifications.
 - **Could not live-test against the real deployed backend from the sandbox this was built in** (network egress is restricted to a fixed allowlist that doesn't include arbitrary deployed URLs). Verified extensively via `tsc`, `eslint`, and `next build` instead, with API response shapes cross-referenced directly against the backend's actual controller/service code. Confirm the full login -> browse -> rent -> pay -> confirm flow end-to-end against the real backend as a first smoke test.
 
+## Known dependency advisories
+
+`npm audit` reports high-severity findings entirely within the **dev tooling chain** - `eslint-config-next`'s pinned `eslint`/`minimatch`/`brace-expansion` versions, and a PostCSS advisory pulled in by the build toolchain. None of these ship in the production bundle or run at runtime; they're lint/build-time only. Forcing `npm audit fix --force` was tried once while building this and downgraded `next` itself to a years-old version by rewriting `package.json` - reverted. Left alone rather than risk repeating that.
+
 ## Notes on the current stack
 
 - **Next.js 16** removed the Pages Router, `next lint`, and Babel entirely, and renamed `middleware.ts` to `proxy.ts` (runs on the Node.js runtime now, not Edge). `params`/`searchParams` are `Promise`s that must be awaited.
