@@ -36,13 +36,19 @@ const ROLE_PREFIX: Record<Role, string> = {
  */
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
+  const token = request.cookies.get(ACCESS_TOKEN_COOKIE)?.value;
+  const role = token ? decodeRole(token) : null;
+
+  if (pathname.startsWith("/auth")) {
+    if (role) {
+      return NextResponse.redirect(new URL(ROLE_PREFIX[role], request.url));
+    }
+    return NextResponse.next();
+  }
 
   if (!pathname.startsWith("/dashboard")) {
     return NextResponse.next();
   }
-
-  const token = request.cookies.get(ACCESS_TOKEN_COOKIE)?.value;
-  const role = token ? decodeRole(token) : null;
 
   if (!role) {
     const loginUrl = new URL("/auth/login", request.url);
@@ -59,5 +65,5 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/dashboard/:path*"],
+  matcher: ["/dashboard/:path*", "/auth/:path*"],
 };

@@ -1,7 +1,7 @@
 "use client";
 
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { toast } from "sonner";
 import { api } from "@/lib/api-client";
 import { queryKeys } from "@/lib/query-keys";
@@ -55,6 +55,7 @@ export function useCurrentUser() {
 
 export function useLogin() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const login = useAuthStore((s) => s.login);
   const queryClient = useQueryClient();
 
@@ -66,7 +67,8 @@ export function useLogin() {
       login(res.data.user, res.data.accessToken, res.data.refreshToken);
       queryClient.setQueryData(queryKeys.auth.me, res.data.user);
       toast.success("Logged in successfully");
-      router.push(roleHome(res.data.user.role));
+      const next = searchParams.get("next");
+      router.push(next && next.startsWith("/dashboard") ? next : roleHome(res.data.user.role));
     },
   });
 }
