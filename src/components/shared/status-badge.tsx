@@ -3,7 +3,7 @@ import type { RentalOrderStatus } from "@/types";
 const STATUS_STYLES: Record<RentalOrderStatus, string> = {
   PLACED: "badge-warning",
   CONFIRMED: "badge-info",
-  PAID: "badge-secondary",
+  PAID: "badge-soft text-[oklch(55%_0.2_305)] border-[oklch(55%_0.2_305)]",
   PICKED_UP: "badge-success",
   RETURNED: "badge-neutral",
   CANCELLED: "badge-error",
