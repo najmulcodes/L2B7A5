@@ -5,6 +5,7 @@ import { toast } from "sonner";
 import { CheckCircle2, PackageCheck, PackageOpen } from "lucide-react";
 import { useRentalDetail, useUpdateOrderStatus } from "@/hooks/use-rentals";
 import { OrderStatusBadge } from "@/components/shared/status-badge";
+import { Breadcrumbs } from "@/components/shared/breadcrumbs";
 import { formatDate, formatMoney } from "@/lib/format";
 import { ApiClientError } from "@/lib/api-client";
 
@@ -42,6 +43,12 @@ export default function ProviderOrderDetailPage({ params }: { params: Promise<{ 
 
   return (
     <div>
+      <Breadcrumbs
+        items={[
+          { label: "Orders", href: "/dashboard/provider/orders" },
+          { label: order.orderNumber },
+        ]}
+      />
       <div className="mb-6 flex flex-wrap items-center justify-between gap-2">
         <div>
           <h1 className="text-2xl font-bold">{order.orderNumber}</h1>

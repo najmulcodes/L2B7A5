@@ -7,6 +7,7 @@ import { CreditCard, XCircle, Star, MapPin, Loader2 } from "lucide-react";
 import { useRentalDetail, useCancelRental } from "@/hooks/use-rentals";
 import { useCreatePayment } from "@/hooks/use-payments";
 import { OrderStatusBadge } from "@/components/shared/status-badge";
+import { Breadcrumbs } from "@/components/shared/breadcrumbs";
 import { formatDate, formatMoney } from "@/lib/format";
 import { ApiClientError } from "@/lib/api-client";
 import { ReviewModal } from "@/components/reviews/review-modal";
@@ -48,6 +49,12 @@ export default function CustomerOrderDetailPage({ params }: { params: Promise<{ 
 
   return (
     <div>
+      <Breadcrumbs
+        items={[
+          { label: "My Orders", href: "/dashboard/customer/orders" },
+          { label: order.orderNumber },
+        ]}
+      />
       <div className="mb-6 flex flex-wrap items-center justify-between gap-2">
         <div>
           <h1 className="text-2xl font-bold">{order.orderNumber}</h1>
